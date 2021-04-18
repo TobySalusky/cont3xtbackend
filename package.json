@@ -1,0 +1,26 @@
+{
+  "name": "cont3xtbackend",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www",
+    "dev": "nodemon ./server.js localhost 4000",
+    "devNode": "nodemon ./app.js localhost 4000",
+    "debug": "nodemon --inspect app.js"
+  },
+  "dependencies": {
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "express": "~4.16.1",
+    "http-errors": "~1.6.3",
+    "ip-to-asn": "^1.0.0",
+    "morgan": "~1.9.1",
+    "pug": "2.0.0-beta11",
+    "whois": "^2.13.3",
+    "whois-json": "^2.0.4",
+    "whois-rdap": "^1.4.5"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
