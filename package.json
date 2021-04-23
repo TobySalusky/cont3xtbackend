@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "dev": "nodemon ./server.js localhost 4000",
-    "devNode": "nodemon ./app.js localhost 4000",
+    "dev": "nodemon ./server.js localhost 3001",
+    "devNode": "nodemon ./app.js localhost 3001",
     "debug": "nodemon --inspect app.js"
   },
   "dependencies": {

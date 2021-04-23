@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express()
-const port = 4000
+const port = 3001
 
 app.use(express.json());
 
@@ -37,18 +37,6 @@ app.get('/ip2asn', async (req, res) => {
         res.json(results)
     });
 })
-
-
-
-
-
-
-
-
-
-
-
-
 
 app.listen(port, () => console.log(`Listening on port ${port}`))
 module.exports = app
