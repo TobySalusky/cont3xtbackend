@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "dev": "nodemon ./server.js localhost 3001",
-    "devNode": "nodemon ./app.js localhost 3001",
+    "dev": "nodemon ./server.js localhost 4000",
+    "devNode": "nodemon ./app.js localhost 4000",
     "debug": "nodemon --inspect app.js"
   },
   "dependencies": {
@@ -21,6 +21,7 @@
     "whois-rdap": "^1.4.5"
   },
   "devDependencies": {
+    "email-verify": "^0.2.1",
     "nodemon": "^2.0.7"
   }
 }

@@ -1,17 +1,20 @@
 const express = require('express')
 const app = express()
-const port = 3001
+const port = 4000
 
 app.use(express.json());
 
 
 
 app.get('/who-is-domain', async (req, res) => {
-
+    
+    console.log('hi')
+    
     try {
         const whois = require('whois-json');
 
         const data = await whois(req.query.domain);
+        console.log(res)
         res.json(data)
 
     } catch (err) {
