@@ -23,6 +23,29 @@ app.get('/who-is-domain', async (req, res) => {
     }
 })
 
+
+app.get('/url-scan', async (req, res) => {
+
+    const axios = require('axios');
+
+    try {
+        const urlScanRes = await axios.get('https://urlscan.io/api/v1/search/', {
+            params: {
+                q: req.query.q
+            },
+            headers: {
+                'API-Key': req.query.key
+            }
+        })
+        res.json(urlScanRes.data);
+
+    } catch (err) {
+        console.log(err);
+        res.send('err')
+    }
+})
+
+
 app.get('/ip2asn', async (req, res) => {
 
     const IPToASN = require('ip-to-asn');
