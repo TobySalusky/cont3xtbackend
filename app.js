@@ -13,7 +13,7 @@ app.get('/who-is-domain', async (req, res) => {
     try {
         const whois = require('whois-json');
 
-        const data = await whois(req.query.domain);
+        const data = await whois(req.query.q);
         console.log(res)
         res.json(data)
 
@@ -44,6 +44,73 @@ app.get('/url-scan', async (req, res) => {
         res.send('err')
     }
 })
+
+app.get('/virus-total-domain', async (req, res) => {
+    
+    const axios = require('axios');
+    
+    try {
+    
+        const virusTotalRes = await axios.get('https://www.virustotal.com/vtapi/v2/domain/report', {
+            params: {
+                apikey: req.query.key,
+                domain: req.query.q,
+            }
+        });
+    
+        console.log('virus total res', virusTotalRes);
+        res.json(virusTotalRes.data);
+    
+    } catch (err) {
+        console.log(err);
+        res.send('err')
+    }
+})
+
+app.get('/virus-total-ip', async (req, res) => {
+    
+    const axios = require('axios');
+    
+    try {
+        
+        const virusTotalRes = await axios.get('https://www.virustotal.com/vtapi/v2/ip-address/report', {
+            params: {
+                apikey: req.query.key,
+                ip: req.query.q,
+            }
+        });
+        
+        console.log('virus total res', virusTotalRes);
+        res.json(virusTotalRes.data);
+        
+    } catch (err) {
+        console.log(err);
+        res.send('err')
+    }
+})
+
+app.get('/virus-total-hash', async (req, res) => {
+    
+    const axios = require('axios');
+    
+    try {
+        
+        const virusTotalRes = await axios.get('https://www.virustotal.com/vtapi/v2/file/report', {
+            params: {
+                apikey: req.query.key,
+                resource: req.query.q,
+            }
+        });
+        
+        console.log('virus total res', virusTotalRes);
+        res.json(virusTotalRes.data);
+        
+    } catch (err) {
+        console.log(err);
+        res.send('err')
+    }
+})
+
 
 
 app.get('/ip2asn', async (req, res) => {
