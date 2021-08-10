@@ -23,6 +23,30 @@ app.get('/who-is-domain', async (req, res) => {
     }
 })
 
+app.get('/threat-stream', async (req, res) => {
+    
+    const axios = require('axios');
+    
+    const {q, url, user, apikey} = req.query;
+    
+    try {
+        const threatStreamRes = await axios.get(`https://${url}/api/v2/intelligence`, {
+            params: {
+                value__exact: q
+            },
+            headers: {
+                Authorization: `apikey ${user}:${apikey}`
+            }
+        });
+        
+        console.log('threatstream res', threatStreamRes);
+        res.json(threatStreamRes.data);
+        
+    } catch (err) {
+        console.log(err);
+        res.send('err')
+    }
+})
 
 app.get('/url-scan', async (req, res) => {
 
@@ -58,7 +82,7 @@ app.get('/virus-total-domain', async (req, res) => {
             }
         });
     
-        console.log('virus total res', virusTotalRes);
+        //console.log('virus total res', virusTotalRes);
         res.json(virusTotalRes.data);
     
     } catch (err) {
@@ -80,7 +104,7 @@ app.get('/virus-total-ip', async (req, res) => {
             }
         });
         
-        console.log('virus total res', virusTotalRes);
+        //console.log('virus total res', virusTotalRes);
         res.json(virusTotalRes.data);
         
     } catch (err) {
@@ -102,7 +126,7 @@ app.get('/virus-total-hash', async (req, res) => {
             }
         });
         
-        console.log('virus total res', virusTotalRes);
+        //console.log('virus total res', virusTotalRes);
         res.json(virusTotalRes.data);
         
     } catch (err) {
