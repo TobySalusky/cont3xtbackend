@@ -136,6 +136,28 @@ app.get('/virus-total-hash', async (req, res) => {
 })
 
 
+app.get('/shodan-search', async (req, res) => {
+    
+    const axios = require('axios');
+    
+    try {
+        
+        const {key, q:query} = req.query;
+        
+        const response = await axios.get('https://api.shodan.io/shodan/host/search', {
+            params: {
+                query, key
+            }
+        });
+        
+        res.json(response.data);
+        
+    } catch (err) {
+        console.log(err);
+        res.send('err')
+    }
+})
+
 
 app.get('/ip2asn', async (req, res) => {
 

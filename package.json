@@ -23,6 +23,7 @@
   },
   "devDependencies": {
     "email-verify": "^0.2.1",
+    "google-libphonenumber": "^3.2.22",
     "nodemon": "^2.0.7"
   }
 }
