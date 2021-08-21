@@ -142,12 +142,12 @@ app.get('/shodan-search', async (req, res) => {
     
     try {
         
-        const {key, q:query} = req.query;
+        const {key, q} = req.query;
         
-        const response = await axios.get('https://api.shodan.io/shodan/host/search', {
-            params: {
-                query, key
-            }
+        const response = await axios.get(`https://api.shodan.io/shodan/host/${q}?key=${key}`, {
+            /*params: {
+                ip: q, key
+            }*/
         });
         
         res.json(response.data);
